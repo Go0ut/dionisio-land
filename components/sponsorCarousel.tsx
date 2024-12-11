@@ -32,7 +32,7 @@ export function SponsorCarousel() {
     const [isHovered, setIsHovered] = useState(false)
     const [translateX, setTranslateX] = useState(0)
     const containerRef = useRef<HTMLDivElement>(null)
-    const ANIMATION_SPEED = 0.2
+    const ANIMATION_SPEED = 0.4
 
     useEffect(() => {
         const container = containerRef.current
