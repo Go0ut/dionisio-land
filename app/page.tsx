@@ -30,6 +30,7 @@ import PricingSection from '@/components/pricingSection'
 import FeaturesSection from '@/components/featuresSection'
 import PartiesSectionTeste from '@/components/movingPartiesSection'
 import MovingClubsSection from '@/components/movingClubsSection'
+import { Instagram } from 'lucide-react'
 
 const plans = [
   {
@@ -168,7 +169,7 @@ const LandingPage = () => {
       <MainNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-        <header className="mb-12 md:mb-24 pt-20 md:pt-32">
+        <header className="mb-12 md:mb-24 pt-20 md:pt-32" id="inicio">
           <motion.div
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -268,74 +269,10 @@ const LandingPage = () => {
             </div>
       
 
-            <PartiesSection />
-            <ClubsSection />
+            <PartiesSection id="festas" />
+            <ClubsSection id="clubes" />
             
-            {/*<ClubsSection />}*/}
-
-            <section className="relative w-full overflow-hidden mt-[70px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-transparent" />
-              <div className="container relative mx-auto p-6 sm:p-8 lg:p-12 bg-purple-950/30 rounded-3xl shadow-2xl backdrop-blur-sm">
-                <div className="absolute inset-0 rounded-3xl border border-purple-500/20" />
-                <div className="grid gap-8 lg:gap-16 lg:grid-cols-2 items-center">
-                  {/* Conteúdo textual */}
-                  <div className="flex flex-col justify-center space-y-6">
-                    <div className="inline-flex items-center self-start rounded-full bg-purple-950/60 px-4 py-2 text-sm text-purple-200 backdrop-blur-sm">
-                      <span className="mr-2">😎</span>
-                      Afinal, o que é o CRM Dionísio?
-                    </div>
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
-                      Conexão única e impactante.
-                    </h1>
-                    <p className="text-sm sm:text-base text-gray-300">
-                      Somos a Dionísio, uma startup de inteligência artificial que te ajuda a descobrir os melhores rolês, festas e eventos de acordo com o seu perfil e um simples questionário. Em Paralelo, nosso sistema de Gestão do Relacionamento com o Cliente (CRM) visa colocar o cliente como o principal foco dos processos de uma empresa, oferecendo uma plataforma simples que visa dinamizar a gestão e aumentar o engajamento com o público. Desse modo, acompanhar vendas, captar dados relevantes e identificar insights estratégicos fica fácil e intuitivo.
-                    </p>
-                    <div>
-                      <div className="relative z-20">
-                        <Link
-                          href="http://dionisio-crm.web.app/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-500 transition-colors"
-                        >
-                          Acessar Agora
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Imagem e círculos */}
-                  <div className="relative lg:block">
-                    <div className="relative mx-auto lg:mx-0 max-w-[400px]">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div
-                          key={i}
-                          className="absolute rounded-full border border-purple-500/20"
-                          style={{
-                            width: `${i * 120}px`,
-                            height: `${i * 120}px`,
-                            top: `${-i * 60}px`,
-                            left: `${-i * 60}px`,
-                            opacity: 1 - i * 0.2,
-                          }}
-                        />
-                      ))}
-                      <div className="relative z-10 rounded-full bg-purple-600/20 p-4 backdrop-blur-sm">
-                        <Image
-                          src={image2}
-                          alt="Sobre o CRM"
-                          className="w-full h-auto rounded-full relative z-10"
-                          priority
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <FeaturesSection />
+            <FeaturesSection id="recursos" />
 
             <SponsorCarousel />
 
@@ -343,7 +280,7 @@ const LandingPage = () => {
           </motion.div>
         </header>
       </div>
-      <footer className="w-full flex flex-col items-center justify-center bg-[#1c0a40] px-4 py-20 text-white z-50 relative">
+      <footer id="contato" className="w-full flex flex-col items-center justify-center bg-[#1c0a40] px-4 py-20 text-white z-50 relative">
         <div className="container mx-auto max-w-4xl flex flex-col items-center text-center">
           <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-[#f0bf5d] via-[#de8c12] to-[#ab5d4b] text-transparent bg-clip-text">
             Fale Conosco
@@ -358,25 +295,37 @@ const LandingPage = () => {
             Diga Olá
           </Link>
           <div className="flex items-center justify-center gap-6 mb-16">
-            <Link href="#" className="text-gray-400 hover:text-[#f0bf5d] transition-colors">
+            <Link 
+              href="https://www.linkedin.com/company/dionisi0/" 
+              target="_blank"
+              className="text-gray-400 hover:text-[#f0bf5d] transition-colors"
+            >
               <Linkedin className="w-6 h-6" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link href="#" className="text-gray-400 hover:text-[#f0bf5d] transition-colors">
-              <Github className="w-6 h-6" />
-              <span className="sr-only">GitHub</span>
+            
+            <Link 
+              href="https://www.instagram.com/dionisio.ia" 
+              target="_blank"
+              className="text-gray-400 hover:text-[#f0bf5d] transition-colors"
+            >
+              <Instagram className="w-6 h-6" />
+              <span className="sr-only">Instagram</span>
             </Link>
-            <Link href="#" className="text-gray-400 hover:text-[#f0bf5d] transition-colors">
-              <Facebook className="w-6 h-6" />
-              <span className="sr-only">Facebook</span>
-            </Link>
-            <Link href="#" className="text-gray-400 hover:text-[#f0bf5d] transition-colors">
-              <Youtube className="w-6 h-6" />
-              <span className="sr-only">YouTube</span>
-            </Link>
-            <Link href="#" className="text-gray-400 hover:text-[#f0bf5d] transition-colors">
-              <WhatsApp className="w-6 h-6" />
-              <span className="sr-only">WhatsApp</span>
+            
+            <Link 
+              href="https://www.tiktok.com/@ia.dionisio" 
+              target="_blank"
+              className="text-gray-400 hover:text-[#f0bf5d] transition-colors"
+            >
+              <svg 
+                className="w-6 h-6" 
+                viewBox="0 0 24 24" 
+                fill="currentColor"
+              >
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+              <span className="sr-only">TikTok</span>
             </Link>
           </div>
           <p className="text-sm text-gray-400">

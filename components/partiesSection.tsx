@@ -58,7 +58,11 @@ function useScreenSize() {
   return isDesktop;
 }
 
-export default function PartiesSection() {
+interface PartiesSectionProps {
+  id?: string;
+}
+
+export default function PartiesSection({ id }: PartiesSectionProps) {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -159,7 +163,7 @@ export default function PartiesSection() {
   }
 
   return (
-    <section className="w-full pt-32 pb-10 text-white">
+    <section id={id} className="w-full pt-32 pb-10 text-white">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-lg bg-[#1a1a47] px-3 py-1 text-sm">

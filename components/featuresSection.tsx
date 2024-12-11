@@ -17,7 +17,11 @@ import crmImage from "@/assets/images/x2.png"
 import menuImage from "@/assets/images/x3.png"
 import eventImage from "@/assets/images/x4.png"
 
-export default function FeaturesSection() {
+interface FeaturesSectionProps {
+  id?: string;
+}
+
+export default function FeaturesSection({ id }: FeaturesSectionProps) {
     const [selectedCard, setSelectedCard] = useState<number | null>(null)
 
     const cards = [
@@ -111,7 +115,7 @@ export default function FeaturesSection() {
                 </div>
 
                 {/* Calendar Demo */}
-                <section className="relative w-full overflow-hidden mt-[70px] py-12">
+                <section id={id} className="relative w-full overflow-hidden mt-[70px] py-12">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-transparent" />
                     <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid gap-8 md:grid-cols-2">

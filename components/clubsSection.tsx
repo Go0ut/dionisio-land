@@ -23,6 +23,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { CarTaxiFront } from "lucide-react";
+
 interface Club {
   id: string;
   name: string;
@@ -92,6 +93,10 @@ interface BlogPost {
   };
 }
 
+interface ClubsSectionProps {
+  id?: string;
+}
+
 function useScreenSize() {
   const [isDesktop, setIsDesktop] = useState(true);
 
@@ -142,7 +147,7 @@ function isDateAllowed(date: Date, workingTime: Record<string, string>) {
   return workingTime[dayOfWeek] !== undefined && workingTime[dayOfWeek] !== "";
 }
 
-export default function ClubsSection() {
+export default function ClubsSection({ id }: ClubsSectionProps) {
   const [date, setDate] = useState<Date | undefined>();
   const [clubs, setClubs] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -239,7 +244,7 @@ export default function ClubsSection() {
   }
 
   return (
-    <section className="w-full pt-32 pb-10 text-white">
+    <section id={id} className="w-full pt-32 pb-10 text-white">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-lg bg-[#1a1a47] px-3 py-1 text-sm">
