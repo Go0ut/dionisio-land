@@ -157,23 +157,17 @@ export default function PricingSection() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-4xl font-bold mb-4 text-black">
-                    {selectedDuration > 1 && (
+                    {/*selectedDuration > 1 && (
                       <div className="text-lg line-through opacity-70 text-purple-900">
                         R$ {plan.prices[1].toFixed(0)}/mês
                       </div>
-                    )}
+                    )*/}
                     R$ {(plan.price / selectedDuration).toFixed(0)}
                     <span className="text-lg font-normal text-black">/mês</span>
                     
                     {selectedDuration > 1 && (
                       <div className="text-sm text-green-600 font-normal">
-                        Economia de {(((plan.prices[1] * selectedDuration) - plan.price) / selectedDuration).toFixed(0)}/mês
-                      </div>
-                    )}
-                    
-                    {selectedDuration > 1 && (
-                      <div className="text-base mt-2 text-gray-600 font-normal">
-                        Total de R$ {plan.price.toFixed(0)}
+                        Economia de {(((plan.prices[1] - (plan.price / selectedDuration)) / plan.prices[1]) * 100).toFixed(0)}% ao mês!
                       </div>
                     )}
                   </div>
