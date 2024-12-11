@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Loader2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Loader2, ChevronLeft, ChevronRight, Instagram } from "lucide-react";
 import placeholderClub from "@/assets/images/p2.png"; // A placeholder image for clubs
 import { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
@@ -38,7 +38,7 @@ interface Club {
   rating: string;
   workingTime: Record<string, string>;
   vipListInfo: Record<string, string>;
-  instagram: string;
+  instagramLink: string;
   freeEntry?: boolean;
   userRatingTotal?: string;
   vipListBenefits?: {
@@ -185,7 +185,7 @@ export default function ClubsSection() {
             rating: club.rating || "",
             workingTime: club.workingTime || {},
             vipListInfo: club.vipListInfo || {},
-            instagram: club.instagram || "",
+            instagram: club.instagramLink || "",
             freeEntry: club.freeEntry,
             userRatingTotal: club.userRatingTotal,
             vipListBenefits: club.vipListBenefits,
@@ -309,7 +309,22 @@ export default function ClubsSection() {
                   </div>
                   <div className="mt-4 px-3 pb-6 flex flex-col h-[230px] overflow-hidden">
                     <div>
-                      <h3 className="text-xl font-bold line-clamp-2">{club.title}</h3>
+                      <div className="flex justify-between items-center">
+                        <span className="inline-block px-2 py-1 text-xs rounded-full bg-[#1a1a47] text-white">
+                          {club.tag}
+                        </span>
+                        {club.details.instagram && (
+                          <Link
+                            href={club.details.instagram}
+                            target="_blank"
+                            className="text-purple-400 hover:text-purple-300 transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Instagram className="w-5 h-5" />
+                          </Link>
+                        )}
+                      </div>
+                      <h3 className="mt-2 text-xl font-bold line-clamp-2">{club.title}</h3>
                       <p className="mt-2 text-zinc-400 line-clamp-2">{club.description}</p>
                       
                       {/* Informações básicas */}
@@ -579,6 +594,7 @@ export default function ClubsSection() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-500 transition-colors"
                     >
+                      <Instagram className="w-4 h-4 mr-2" />
                       Seguir no Instagram
                     </a>
                   )}
