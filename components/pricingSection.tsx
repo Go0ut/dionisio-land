@@ -143,7 +143,7 @@ export default function PricingSection() {
             {plans.map((plan) => (
               <Card
                 key={plan.name}
-                className={`flex min-h-[450px] flex-col justify-around 
+                className={`flex min-h-[450px] flex-col justify-around bg-[#fff]
                   ${plan.recommended 
                     ? "border-yellow-500 shadow-lg md:scale-105" 
                     : "opacity-50 hover:opacity-80 md:scale-100"

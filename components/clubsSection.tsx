@@ -405,7 +405,7 @@ export default function ClubsSection() {
                   
                   <CardHeader className="relative">
                     <CardTitle className="text-2xl font-bold text-center text-white">
-                      <span className="bg-gradient-to-r from-purple-300 via-purple-200 to-purple-300 text-transparent bg-clip-text">
+                      <span className="bg-gradient-to-r from-purple-300 via-purple-200 to-purple-300 text-transparent bg-clip-text text-white">
                         Adicionar à Lista VIP
                       </span>
                     </CardTitle>
