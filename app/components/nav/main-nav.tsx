@@ -107,7 +107,7 @@ export function MainNav() {
             onClick={() => scrollToSection("clubes")}
             className="text-sm font-medium text-white hover:text-purple-300 transition-colors py-2"
           >
-            Clubes
+            Baladas
           </button>
           <button
             onClick={() => scrollToSection("recursos")}
