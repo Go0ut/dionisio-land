@@ -21,6 +21,7 @@ import p3 from "@/assets/images/p3.png"
 import p4 from "@/assets/images/p4.png"
 import p5 from "@/assets/images/p5.png"
 import p6 from "@/assets/images/p6.png"
+import logo from "@/assets/images/degrade-logo.png"
 import { StaticImageData } from 'next/image'
 import { SponsorCarousel } from '@/components/sponsorCarousel'
 import { Facebook, Github, Linkedin, Youtube, PhoneIcon as WhatsApp } from 'lucide-react'
@@ -177,7 +178,7 @@ const LandingPage = () => {
             className="relative"
           >
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0">
-              <div className="text-center lg:text-left">
+              <div className="text-center lg:text-left w-full lg:w-1/2">
                 <motion.p
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -186,9 +187,16 @@ const LandingPage = () => {
                 >
                   Pronto para a melhor vibe?
                 </motion.p>
-                <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-4 md:mb-8 leading-tight">
-                  Dionísio
-                </h1>
+                
+                {/* Container do logo com alinhamento responsivo */}
+                <div className="flex justify-center lg:justify-start">
+                  <Image 
+                    src={logo} 
+                    alt="Dionísio" 
+                    className="w-[200px] sm:w-[250px] lg:w-[300px] h-auto filter contrast-125 mt-[10px] mb-[40px]" 
+                    priority
+                  />
+                </div>
 
                 {/* Glow Effect */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-purple-800/20 blur-[120px] rounded-full" />

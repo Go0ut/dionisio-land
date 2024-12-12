@@ -29,6 +29,7 @@ interface Party {
   organizer?: string;
   active: boolean;
   instagramLink?: string;
+  tickets: Record<string, string>;
 }
 
 interface BlogPost {
@@ -40,6 +41,7 @@ interface BlogPost {
   image: string | StaticImageData;
   link: string;
   instagramLink?: string;
+  tickets: Record<string, string>;
 }
 
 function useScreenSize() {
@@ -77,6 +79,7 @@ export default function PartiesSection({ id }: PartiesSectionProps) {
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [pixKey, setPixKey] = useState<string | null>(null);
+  const [selectedTicketType, setSelectedTicketType] = useState<string>("");
 
   const ITEMS_PER_PAGE = isDesktop ? 3 : 1;
 
@@ -120,6 +123,7 @@ export default function PartiesSection({ id }: PartiesSectionProps) {
             image: party.photo || party.imageUrl || placeholderEvent,
             link: party.link || "#",
             instagramLink: party.instagramLink,
+            tickets: party.tickets || {},
           };
         });
 
@@ -422,15 +426,45 @@ export default function PartiesSection({ id }: PartiesSectionProps) {
                             />
                           </div>
 
+                          <div className="space-y-2">
+                            <Label htmlFor="ticketType">Tipo de Ingresso</Label>
+                            <select
+                              id="ticketType"
+                              value={selectedTicketType}
+                              onChange={(e) => setSelectedTicketType(e.target.value)}
+                              className="w-full bg-purple-900/40 border-purple-500/30 text-white 
+                                focus:border-purple-400 focus:ring-purple-400/50 backdrop-blur-sm 
+                                transition-all rounded-lg px-3 py-2"
+                              required
+                            >
+                              <option value="" disabled>Selecione o tipo de ingresso</option>
+                              {selectedParty && Object.entries(selectedParty.tickets).map(([type, value]) => (
+                                <option key={type} value={type}>
+                                  {type} - R$ {value}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+
                           <div className="text-sm text-purple-200 space-y-1">
-                            <p>Valor unitário: R$ 100,00</p>
-                            <p>Total: R$ {(pixFormData.quantity * 100).toFixed(2)}</p>
+                            {selectedTicketType && (
+                              <>
+                                <p>Valor unitário: R$ {selectedParty.tickets[selectedTicketType]}</p>
+                                <p>Total: R$ {(
+                                  pixFormData.quantity * parseFloat(selectedParty.tickets[selectedTicketType])
+                                ).toFixed(2)}</p>
+                              </>
+                            )}
                           </div>
 
                           <button
                             onClick={async () => {
                               if (!pixFormData.email) {
                                 alert("Por favor, preencha seu email.");
+                                return;
+                              }
+                              if (!selectedTicketType) {
+                                alert("Por favor, selecione um tipo de ingresso.");
                                 return;
                               }
 
@@ -447,9 +481,11 @@ export default function PartiesSection({ id }: PartiesSectionProps) {
                                     party: selectedParty.title,
                                     quantity: pixFormData.quantity,
                                     email: pixFormData.email,
-                                    ticketType: "Standard",
+                                    ticketType: selectedTicketType,
                                     userId: pixFormData.phone,
-                                    value: (pixFormData.quantity * 100).toFixed(2),
+                                    value: (
+                                      pixFormData.quantity * parseFloat(selectedParty.tickets[selectedTicketType])
+                                    ).toFixed(2),
                                     partyId: "party_456",
                                   }),
                                 });
@@ -513,13 +549,17 @@ export default function PartiesSection({ id }: PartiesSectionProps) {
 
                           <div className="text-sm text-purple-200 space-y-1">
                             <p>Quantidade: {pixFormData.quantity} ingresso(s)</p>
-                            <p>Total a pagar: R$ {(pixFormData.quantity * 100).toFixed(2)}</p>
+                            <p>Tipo: {selectedTicketType}</p>
+                            <p>Total a pagar: R$ {(
+                              pixFormData.quantity * parseFloat(selectedParty.tickets[selectedTicketType])
+                            ).toFixed(2)}</p>
                           </div>
 
                           <Button
                             onClick={() => {
                               setPixKey(null);
                               setPixFormData({ email: '', phone: '', quantity: 1 });
+                              setSelectedTicketType("");
                             }}
                             variant="outline"
                             className="w-full mt-4"
