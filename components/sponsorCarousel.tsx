@@ -83,7 +83,7 @@ export function SponsorCarousel() {
                         Nossos Clientes
                     </div>
                     <h2 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                        Quem confia na Dionísio
+                        Quem confia no Dionísio
                     </h2>
                     <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
                         Empresas que já transformaram sua gestão de relacionamento com o CRM Dionísio
