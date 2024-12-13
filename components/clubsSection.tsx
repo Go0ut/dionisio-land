@@ -441,9 +441,10 @@ export default function ClubsSection({ id }: ClubsSectionProps) {
                           const formData = new FormData(form);
                           
                           const name = formData.get("name");
+                          const phone = formData.get("phone");
                           const listDate = formData.get("listDate");
 
-                          if (!name || !listDate) {
+                          if (!name || !phone || !listDate) {
                             throw new Error("Por favor, preencha todos os campos.");
                           }
 
@@ -455,7 +456,7 @@ export default function ClubsSection({ id }: ClubsSectionProps) {
                             clubId: selectedClub.details.id,
                             name: name.toString(),
                             listDate: listDate.toString(),
-                            userId: "user_001"
+                            userId: phone.toString()
                           };
 
                           const response = await fetch(
@@ -511,6 +512,20 @@ export default function ClubsSection({ id }: ClubsSectionProps) {
                           id="name"
                           name="name"
                           placeholder="Digite seu nome completo"
+                          className="bg-purple-900/40 border-purple-500/30 text-white placeholder:text-purple-300/50 focus:border-purple-400 focus:ring-purple-400/50 backdrop-blur-sm transition-all"
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-purple-200 font-medium">
+                          Celular
+                        </Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          placeholder="(11) 99999-9999"
                           className="bg-purple-900/40 border-purple-500/30 text-white placeholder:text-purple-300/50 focus:border-purple-400 focus:ring-purple-400/50 backdrop-blur-sm transition-all"
                           required
                         />

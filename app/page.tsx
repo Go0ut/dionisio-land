@@ -193,7 +193,7 @@ const LandingPage = () => {
                   <Image 
                     src={logo} 
                     alt="Dionísio" 
-                    className="w-[200px] sm:w-[250px] lg:w-[300px] h-auto filter contrast-125 mt-[10px] mb-[40px]" 
+                    className="w-[200px] sm:w-[250px] lg:w-[400px] h-auto filter contrast-125 mt-[10px] mb-[40px]" 
                     priority
                   />
                 </div>
