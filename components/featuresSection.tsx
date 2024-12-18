@@ -16,6 +16,7 @@ import aiImage from "@/assets/images/x1.png"
 import crmImage from "@/assets/images/x2.png"
 import menuImage from "@/assets/images/x3.png"
 import eventImage from "@/assets/images/x4.png"
+import { Video } from "lucide-react"
 
 interface FeaturesSectionProps {
   id?: string;
@@ -38,7 +39,8 @@ export default function FeaturesSection({ id }: FeaturesSectionProps) {
                     "Atendimento 24/7: Sempre disponível para responder mensagens, a qualquer hora.",
                     "Interpretação inteligente: A IA entende o contexto das mensagens e mantém conversas fluídas, evitando bugs.",
                     "Redução de custos: Automatiza interações, reduzindo a necessidade de operadores humanos."
-                ]
+                ],
+                videoUrl: "https://firebasestorage.googleapis.com/v0/b/go-out-prod.appspot.com/o/images%2FIA%20Atendente.mp4?alt=media&token=2257338f-c65c-4c60-8833-0b354aa84516"
             }
         },
         {
@@ -55,7 +57,8 @@ export default function FeaturesSection({ id }: FeaturesSectionProps) {
                     "Relatórios detalhados: Estatísticas por gênero, idade e promotores, auxiliando na tomada de decisões estratégicas.",
                     "Interface intuitiva: Fácil de usar, com suporte à criação de eventos e listas para promoters.",
                     "Gestão de promoters e hostess: Controle total sobre as atividades de entrada e relacionamento com os clientes."
-                ]
+                ],
+                videoUrl: "https://firebasestorage.googleapis.com/v0/b/go-out-prod.appspot.com/o/images%2FCRM.mp4?alt=media&token=5ac6a641-c24a-4010-82fa-1c1203bb8f6e"
             }
         },
         {
@@ -72,7 +75,8 @@ export default function FeaturesSection({ id }: FeaturesSectionProps) {
                     "Interatividade: Imagens atraentes e descrições detalhadas, aumentando o apelo visual.",
                     "Personalização: Alinhamento com a identidade visual do estabelecimento.",
                     "Facilidade de uso: Alterações podem ser feitas via dispositivos móveis ou computador."
-                ]
+                ],
+                videoUrl: "https://firebasestorage.googleapis.com/v0/b/go-out-prod.appspot.com/o/images%2FCardapio%20Digital.mp4?alt=media&token=44ac7c52-b201-4a1a-8d72-227f00c9b3e2"
             }
         },
         {
@@ -156,7 +160,7 @@ export default function FeaturesSection({ id }: FeaturesSectionProps) {
 
             {/* Dialog para detalhes do card */}
             <Dialog open={selectedCard !== null} onOpenChange={() => setSelectedCard(null)}>
-                <DialogContent className="border-none bg-purple-950/90 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
+                <DialogContent className="border-none bg-purple-950/90 text-white max-w-4xl max-h-[90vh] overflow-y-auto">
                     {selectedCard !== null && (
                         <>
                             <DialogHeader>
@@ -167,6 +171,23 @@ export default function FeaturesSection({ id }: FeaturesSectionProps) {
                                     {cards[selectedCard].details.description}
                                 </DialogDescription>
                             </DialogHeader>
+                            
+                            {/* Video Section */}
+                            {cards[selectedCard].details.videoUrl && (
+                                <div className="mt-6 rounded-lg overflow-hidden bg-purple-900/50 backdrop-blur-sm">
+                                    <video 
+                                        autoPlay
+                                        controls 
+                                        className="w-full aspect-video"
+                                        poster={selectedCard === 1 ? "https://firebasestorage.googleapis.com/v0/b/go-out-prod.appspot.com/o/images%2FNPS.jpg?alt=media&token=c940b5a9-8151-4251-b030-48d150d9c332" : undefined}
+                                    >
+                                        <source src={cards[selectedCard].details.videoUrl} type="video/mp4" />
+                                        Seu navegador não suporta o elemento de vídeo.
+                                    </video>
+                                </div>
+                            )}
+                            
+                            {/* Benefits Section */}
                             <div className="mt-6 space-y-4">
                                 <h3 className="text-lg font-semibold text-purple-300">Principais Benefícios:</h3>
                                 <ul className="space-y-2">
