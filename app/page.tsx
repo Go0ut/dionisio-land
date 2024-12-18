@@ -344,6 +344,18 @@ const LandingPage = () => {
             . Construído com React, Next.js e Inteligência Artificial.
           </p>
         </div>
+        <div className="container mx-auto px-4">
+          {/* Existing footer content if any */}
+          
+          {/* New legal information */}
+          <div className="mt-8 pt-4 border-t border-purple-800/30">
+            <div className="text-center text-xs text-gray-500/60 space-y-1">
+              <p>CNPJ: 52.775.010/0001-00</p>
+              <p>Telefone: +55 (11) 2532-1707</p>
+              <p>Razão Social: 52.775.010 LUIS AUGUSTO CORREIA DA SILVA</p>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   )
